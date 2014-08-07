@@ -53,8 +53,37 @@ module Blinkbox
     end
 
     # Accessor for the properties stored in the instance. Accepts strings or symbols indifferently.
+    #
+    # @params [String, Symbol] key The name of the property to retrieve.
     def [](key)
       @options[key]
+    end
+    alias :get :[]
+
+    # Retrieves a hash of all properties which are beneath this starting element in the tree.
+    #
+    # # logging.host = "127.0.0.1"
+    # # logging.port = 1234
+    # # logging = this won't be returned
+    #
+    # properties.tree(:logging)
+    # # => { host: "127.0.0.1", port: 1234 }
+    #
+    # properties.tree(:log)
+    # # => {}
+    #
+    # @params [String, Symbol] root The root key to look underneath.
+    # @returns [Hash] Returns a has
+    def tree(root)
+      Hash[@options.keys.map { |key|
+        len = root.length + 1
+        if key.to_s.slice(0, len) == root.to_s + '.'
+          [
+            key.to_s[len..-1].to_sym,
+            @options[key]
+          ]
+        end
+      }.compact]
     end
   end
 end
