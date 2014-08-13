@@ -6,6 +6,8 @@ context Blinkbox::CommonConfig do
       logging.host = hostname.com
       logging.port = 1234
       logging = isn't in the tree for logging.
+      delay = 5 seconds
+      long_delay = 5 minutes
     PROPS
   }
 
@@ -20,6 +22,14 @@ context Blinkbox::CommonConfig do
 
     it "must return nil if the property is not defined" do
       expect(properties[:doesnt_exist]).to be_nil
+    end
+
+    it "must return a number with a unit for properties in the right format" do
+      expect(properties[:delay].convert_to("seconds").scalar).to eq(5)
+    end
+
+    it "must return numbers with other units in a convertible format" do
+      expect(properties[:long_delay].convert_to("seconds").scalar).to eq(5 * 60)
     end
   end
 

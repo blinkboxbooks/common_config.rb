@@ -1,6 +1,7 @@
 require "java_properties"
 require "net/http"
 require "tempfile"
+require "ruby_units"
 
 module Blinkbox
   class CommonConfig
@@ -49,6 +50,12 @@ module Blinkbox
         end
         logger.info "Loaded configuration from #{ENV['CONFIG_URL']}" unless logger.nil?
         @sources.unshift(ENV['CONFIG_URL'])
+      end
+
+      @options.each do |option, value|
+        if value.is_a?(String) && value =~ /^\d+\ .+$/
+          @options[option] = Unit(value)
+        end
       end
     end
 
