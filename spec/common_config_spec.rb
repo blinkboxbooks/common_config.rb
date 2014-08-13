@@ -37,7 +37,7 @@ context Blinkbox::CommonConfig do
     it "must return all keys in the specified tree as a hash" do
       expected_hash = {
         host: "hostname.com",
-        port: "1234"
+        port: 1234
       }
       expect(properties.tree(:logging)).to eq(expected_hash)
     end
