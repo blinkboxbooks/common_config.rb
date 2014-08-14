@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.0 ([#2](https://git.mobcastdev.com/Platform/common_config.rb/pull/2) 2014-08-13 16:33:04)
+
+Use units in properties
+
+### New Feature
+
+- Properties in the format `5 seconds` will be converted to [Unit](https://github.com/olbrich/ruby-units) objects so that they can be easily manipulated:
+
+```ruby
+property = Unit("6 minutes")
+
+p property.convert_to("seconds").scalar
+### => 360
+```
+
 ## 0.1.0
 
 Initial release
