@@ -1,4 +1,5 @@
 require "java_properties"
+require "java_properties/data_types"
 require "net/http"
 require "tempfile"
 

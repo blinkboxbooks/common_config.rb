@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency "java_properties"
+  gem.add_dependency "ruby-units", "~>1.4"
 
   gem.add_development_dependency "rake"
   gem.add_development_dependency "rspec", "~>3.0"
