@@ -2,6 +2,7 @@ require "java_properties"
 require "java_properties/data_types"
 require "net/http"
 require "tempfile"
+require "blinkbox/core_overrides"
 
 module Blinkbox
   class CommonConfig
@@ -76,15 +77,14 @@ module Blinkbox
     # @params [String, Symbol] root The root key to look underneath.
     # @returns [Hash] Returns a has
     def tree(root)
-      Hash[@options.keys.map { |key|
+      hash = {}
+      @options.keys.each { |key|
         len = root.length + 1
         if key.to_s.slice(0, len) == root.to_s + '.'
-          [
-            key.to_s[len..-1].to_sym,
-            @options[key]
-          ]
+          hash.deep_set(key.to_s[len..-1], @options[key])
         end
-      }.compact]
+      }
+      hash
     end
   end
 end
