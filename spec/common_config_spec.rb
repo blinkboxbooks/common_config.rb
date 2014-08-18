@@ -8,6 +8,9 @@ context Blinkbox::CommonConfig do
       logging = isn't in the tree for logging.
       delay = 5 seconds
       long_delay = 5 minutes
+      nested.keys.depth = three
+      nested.keys.other = three
+      nested.other_key = two
     PROPS
   }
 
@@ -52,6 +55,17 @@ context Blinkbox::CommonConfig do
 
     it "must not return partial matches" do
       expect(properties.tree(:log)).to eq({})
+    end
+
+    it "must return nested keys as hashes" do
+      expected_hash = {
+        keys: {
+          depth: "three",
+          other: "three",
+        },
+        other_key: "two"
+      }
+      expect(properties.tree(:nested)).to eq(expected_hash)
     end
   end
 end
