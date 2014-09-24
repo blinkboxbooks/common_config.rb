@@ -8,6 +8,9 @@ context Blinkbox::CommonConfig do
       logging = isn't in the tree for logging.
       delay = 5 seconds
       long_delay = 5 minutes
+      yes = true
+      no = false
+      symbol = :symbol
     PROPS
   }
 
@@ -30,6 +33,18 @@ context Blinkbox::CommonConfig do
 
     it "must return numbers with other units in a convertible format" do
       expect(properties[:long_delay].convert_to("seconds").scalar).to eq(5 * 60)
+    end
+
+    it "must return a 'true' value as a true boolean" do
+      expect(properties[:yes]).to eql(true)
+    end
+
+    it "must return a 'false' value as a false boolean" do
+      expect(properties[:no]).to eql(false)
+    end
+
+    it "must return a symbol for strings starting with colons" do
+      expect(properties[:symbol]).to eql(:symbol)
     end
   end
 
