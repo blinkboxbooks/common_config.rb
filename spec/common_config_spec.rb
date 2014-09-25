@@ -11,6 +11,12 @@ context Blinkbox::CommonConfig do
       nested.keys.depth = three
       nested.keys.other = three
       nested.other_key = two
+      yes = true
+      stringtrue = "true"
+      no = false
+      stringfalse = "false"
+      symbol = :symbol
+      something = "something"
     PROPS
   }
 
@@ -33,6 +39,30 @@ context Blinkbox::CommonConfig do
 
     it "must return numbers with other units in a convertible format" do
       expect(properties[:long_delay].convert_to("seconds").scalar).to eq(5 * 60)
+    end
+
+    it "must return a 'true' value as a true boolean" do
+      expect(properties[:yes]).to eql(true)
+    end
+
+    it "must return a 'false' value as a false boolean" do
+      expect(properties[:no]).to eql(false)
+    end
+
+    it "must return '\"true\"' as the string 'true'" do
+      expect(properties[:stringtrue]).to eql("true")
+    end
+
+    it "must return '\"false\"' as the string 'false'" do
+      expect(properties[:stringtrue]).to eql("true")
+    end
+
+    it "must return '\"something\"' as the string 'something'" do
+      expect(properties[:something]).to eql("something")
+    end
+
+    it "must return a symbol for strings starting with colons" do
+      expect(properties[:symbol]).to eql(:symbol)
     end
   end
 

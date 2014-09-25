@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.0 ([#4](https://git.mobcastdev.com/Platform/common_config.rb/pull/4) 2014-09-25 10:00:48)
+
+Symbols and booleans
+
+### New feature
+
+- Converts `"true"` and `"false"` to boolean values.
+- Converts `":thing"` to `:thing` symbols.
+
 ## 0.2.0 ([#2](https://git.mobcastdev.com/Platform/common_config.rb/pull/2) 2014-08-13 16:33:04)
 
 Use units in properties
