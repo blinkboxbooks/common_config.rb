@@ -4,10 +4,7 @@ class Hash
     final_key = path_keys.pop
 
     sub_obj = self
-    path_keys.each do |k|
-      sub_obj[k.to_sym] ||= {}
-      sub_obj = sub_obj[k.to_sym]
-    end
+    path_keys.each { |k| sub_obj = sub_obj[k.to_sym] ||= {} }
 
     sub_obj[final_key.to_sym] = value
   end
