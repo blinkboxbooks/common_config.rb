@@ -9,8 +9,11 @@ context Blinkbox::CommonConfig do
       delay = 5 seconds
       long_delay = 5 minutes
       yes = true
+      stringtrue = "true"
       no = false
+      stringfalse = "false"
       symbol = :symbol
+      something = "something"
     PROPS
   }
 
@@ -41,6 +44,18 @@ context Blinkbox::CommonConfig do
 
     it "must return a 'false' value as a false boolean" do
       expect(properties[:no]).to eql(false)
+    end
+
+    it "must return '\"true\"' as the string 'true'" do
+      expect(properties[:stringtrue]).to eql("true")
+    end
+
+    it "must return '\"false\"' as the string 'false'" do
+      expect(properties[:stringtrue]).to eql("true")
+    end
+
+    it "must return '\"something\"' as the string 'something'" do
+      expect(properties[:something]).to eql("something")
     end
 
     it "must return a symbol for strings starting with colons" do

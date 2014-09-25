@@ -18,6 +18,8 @@ module JavaProperties
           string.to_i
         when /^\d+\.\d+$/
           string.to_f
+        when /^"(.*)"$/
+          Regexp.last_match[1]
         else
           string
         end
