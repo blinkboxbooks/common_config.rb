@@ -10,8 +10,8 @@ module JavaProperties
         case string
         when /^:(\w+)$/
           Regexp.last_match[1].to_sym
-        when /^(?:(true)|false)$/i
-          !Regexp.last_match[1].nil?
+        when /^(?:true|false)$/i
+          string.downcase == "true"
         when /^\d+\ .+$/
           Unit(string)
         when /^\d+$/
