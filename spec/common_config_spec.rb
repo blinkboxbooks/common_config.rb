@@ -89,11 +89,9 @@ context Blinkbox::CommonConfig do
 
     it "must return nested keys as hashes" do
       expected_hash = {
-        keys: {
-          depth: "three",
-          other: "three",
-        },
-        other_key: "two"
+        :'keys.depth' => "three",
+        :'keys.other' => "three",
+        :other_key    => "two"
       }
       expect(properties.tree(:nested)).to eq(expected_hash)
     end
