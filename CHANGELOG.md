@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 ([#6](https://git.mobcastdev.com/Platform/common_config.rb/pull/6) 2014-10-03 15:41:55)
+
+No deep setting
+
+### Breaking change
+
+- Should not have changed this to using deep setting (other apps depend on it being single keys, and this is more flexible)
+
 ## 0.3.1 ([#3](https://git.mobcastdev.com/Platform/common_config.rb/pull/3) 2014-08-18 09:46:37)
 
 Depth
