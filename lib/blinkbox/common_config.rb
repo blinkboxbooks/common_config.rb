@@ -2,7 +2,6 @@ require "java_properties"
 require "java_properties/data_types"
 require "net/http"
 require "tempfile"
-require "blinkbox/core_overrides"
 
 module Blinkbox
   class CommonConfig
@@ -54,6 +53,15 @@ module Blinkbox
       end
     end
 
+    # Creates a CommonConfig object from a hash.
+    #
+    # @params [Hash] hash The hash which will become the config. Symbol or string key values are cool.
+    def self.from_hash(hash)
+      config = self.allocate
+      config.instance_variable_set(:'@options', hash)
+      config
+    end
+
     # Accessor for the properties stored in the instance. Accepts strings or symbols indifferently.
     #
     # @params [String, Symbol] key The name of the property to retrieve.
@@ -64,12 +72,12 @@ module Blinkbox
 
     # Retrieves a hash of all properties which are beneath this starting element in the tree.
     #
-    # # logging.host = "127.0.0.1"
-    # # logging.port = 1234
+    # # logging.udp.host = "127.0.0.1"
+    # # logging.udp.port = 1234
     # # logging = this won't be returned
     #
     # properties.tree(:logging)
-    # # => { host: "127.0.0.1", port: 1234 }
+    # # => { :'udp.host' => "127.0.0.1", :'udp.port' => 1234 }
     #
     # properties.tree(:log)
     # # => {}
@@ -81,7 +89,7 @@ module Blinkbox
       @options.each { |key, value|
         len = root.length + 1
         if key.to_s.slice(0, len) == root.to_s + '.'
-          hash.deep_set(key.to_s[len..-1], value)
+          hash[key.to_s[len..-1].to_sym] = value
         end
       }
       hash
