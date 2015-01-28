@@ -1,5 +1,9 @@
 # Changelog
 
+## Open Source release (2015-01-28 14:11:21)
+
+Today we have decided to publish parts of our codebase on Github under the [MIT licence](LICENCE). The licence is very permissive, but we will always appreciate hearing if and where our work is used!
+
 ## 0.4.0 ([#6](https://git.mobcastdev.com/Platform/common_config.rb/pull/6) 2014-10-03 15:41:55)
 
 No deep setting
