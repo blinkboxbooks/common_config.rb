@@ -5,7 +5,7 @@ rvm:
 deploy:
   provider: rubygems
   api_key:
-    secure: af9asVAbzYzauAetuIneYpv77mjgZ3+93nVQqBTeRaY8JE/QR9xZugfZxsUzO4VCaYMr1tINyFGZOp1YqDO+PhayYkTxcMDO8SVHTskuj5i30v/q7Dx/KYjamd9hFhzXZLapieHsWvfP+HAprm5gbjuiqqOcpqqJcWlYBATtgqo=
+    secure: NoiCCOqmdNpkgefdthA5CeiGz9dAC/YRqUtxXMOr/SMCRZa1zYe6KoYLR133xSWhxQP3dZCRkgVtZtmXYZW6SLk3TT4K1D4bHN51uHabXSq4UVwVsVwF6Bibdgod/iGhEtNyzPFS1sQv+iXEuHUl1Z+/1Zn1qbVDw93Eh6vYghc=
   gem: blinkbox-common_config
   on:
     repo: blinkboxbooks/common_config.rb
